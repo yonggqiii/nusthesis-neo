@@ -1,9 +1,20 @@
 \begin{refsection}
-\nocite{%
-  TR04:Arasu,
-  nsdi12:Zaharia,
-  tods92:Mohan,
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Cite your publications within \nocite{...}. To highlight your name
+%%% in the bibliography, annotate your name with "me" in your .bib
+%%% files, e.g.,
+%%% @book{cite:3,
+%%%   author = {{Foo Yong Qi}},
+%%%   shortauthor = {Foo, Yong Qi},
+%%%   author+an = {1=me}, % <- the number is the position of your name in
+%%%                       %    the list of authors
+%%%   title = {Microlocal {G}alois Theory},
+%%%   publisher = {McGraw Hill},
+%%%   year = {1993},
+%%%   pages = {162}
+%%% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nocite{00,cite:3,cite:11,cite:13,cite:18,cite:22,cite:23}
 
 \defbibnote{PubListPrenote}{%
 % provide some text, if any, before the list of publications
@@ -12,11 +23,23 @@
 % provide some text, if any, after the list of publications
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Let the following handle the rest
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bookmarksetup{startatroot}
-\newrefcontext[sorting=none]
+\newrefcontext[sorting=ynt]
+\ssp
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \ifitemannotation{me}
+    {\textbf{#1}}
+    {#1}}
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifitemannotation{me}
+    {\textbf{#1}}
+    {#1}}
 \printbibliography[
   heading=bibintoc,
-  title={Publications during PhD Study},
+  title={Publications During PhD Study},
   prenote=PubListPrenote,
   postnote=PubListPostnote
 ]

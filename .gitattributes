@@ -13,6 +13,8 @@
 *.xml text
 *.txt text
 *.ini text
+*.tex text
+*.cls text
 *.inc text
 *.pl text
 *.rb text

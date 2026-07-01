@@ -1,55 +1,111 @@
-%%% enable "DoubleSided" for paper-based submission, i.e. printing, and 
-%%% remove it for the final submission, i.e. electronic thesis
-%\newcommand*{\DoubleSided}{} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% class options:
+%%%   - qe: enable QE mode
+%%%   - review: enable line numbers
+%%%   - twoside: two-sided printing mode
+%%%   - numcite: numeric citations
+%%%   - print: remove colors for printing
+%%%   any other configuration options for memoir package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{nusthesis-neo}
 
+\dsp % use double spacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% The abstract of the thesis is titled as "Abstract" by default. 
+%%% However, the Graduate Division may require you to name it as "Summary".
+%%% If you need to change it to Summary, uncomment the following line
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \changeabstractname{Summary}
+
+\addbibresource{references.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Additional settings can be included in _global_settings.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{_global_settings.tex}
 
 \begin{document}
 
-\title{We Are What We Eat: The Recipe of Success}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Give your thesis an awesome title!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Moduli for an Abelian Conditionally Hyperbolic Function}
 
-\author{CHICKEN Rice}
-\prevdegrees{%
-  B.S., Culinary University}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Put your name here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Jane Tan}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% If you have other degrees, you may list each of them using the 
+%%% \prevdegree command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\prevdegree{B.A. (Hons), Harvard University}
+\prevdegree{M.S., Massachusetts Institute of Technology}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Set the degree, field and year for this thesis using the \degree,
+%%% \field and \degreeyear commands, respectively
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \degree{Doctor of Philosophy}
-\field{Cooking Science}
-\degreeyear{2021}
-\supervisor{Professor Hamburger STEAK}
+\field{Computer Science}
+\degreeyear{2028}
 
-% only involve the examiners in the final submission
-\examiners{%
-  Associate Professor CHAR Kway Teow \\
-  Assistant Professor Yummy Bee Hoon CRAB \\
-  Professor BAK Kwa, Dessert University}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% List your advisor(s) and examiner(s) here. Only include the
+%%% examiners for the final submission.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\advisor{Professor Georg Cantor, Main Advisor}
+\advisor{Professor Albert Einstein, Co-advisor}
+\advisor{Professor Alfred Tarski, Spiritual Advisor}
+
+\examiner{Associate Professor ABC} % include only for final submission
+\examiner{Associate Professor DEF} % include only for final submission
 
 \maketitle
 
-\declaredate{1 March 2021}
-\declaresign{\RootPicDir /signature.jpg} % remove this if you prefer to sign physically
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Setup the declaration page. Change the date of your declaration and
+%%% set up your signature. The signature is optional if you prefer to
+%%% sign physically
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\declaredate{1 October 2028}
+\declaresign{pic/signature.png} % remove this if you prefer to sign physically
 \declarationpage
 
 \begin{frontmatter}
-  \dedicate{To my delicious friends}
-  \input{chapters/acknowledgments.tex}
-  \tableofcontents 
-  \input{chapters/abstract.tex}
-  \listoffigures
-  \listoftables
+  % Write your dedication using the \dedicate command
+  \dedicate{To my dog whose name is cat}
+  \input{chapters/acknowledgments.tex} % write your acknowledgments in chapters/acknowledgments.tex
+  \begingroup
+  \setlength{\parskip}{0pt}
+  \hypersetup{hidelinks}
+  {\ssp\sffamily\tableofcontents}
+  \input{chapters/abstract.tex} % write your abstract in chapters/abstract.tex
+  {\ssp\listoftables} % comment out if your thesis has no tables
+  {\ssp\listoffigures} % comment out if your thesis has no figures
+  \endgroup
 \end{frontmatter}
 
-\input{chapters/ch-intro.tex}
-\input{chapters/ch-review.tex}
-\input{chapters/ch-rice.tex}
-\input{chapters/ch-noodle.tex}
-\input{chapters/ch-concl.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Insert the chapters of your thesis here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/ch-user-guide}
+\input{chapters/ch-cat}
+\input{chapters/ch-concl}
 
+%%% Bibliography
 \bookmarksetup{startatroot}
+{
+\ssp
 \printbibliography[heading=bibintoc]
+}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Appendices go here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
-\input{chapters/ap-recipes.tex}
-\input{chapters/ap-ingredients.tex}
-
-\input{chapters/ap-publication.tex} % optional to include your publication list
+\input{chapters/ap-moduli}
+\input{chapters/ap-publication} % optional to include your publication list
 
 \end{document}
